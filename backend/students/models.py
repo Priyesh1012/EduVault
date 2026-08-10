@@ -15,7 +15,7 @@ class StudentProfile(models.Model):
     course = models.CharField(max_length=100)
     division = models.CharField(max_length=10, blank=True)
     graduation_year = models.PositiveIntegerField()
-
+    college = models.CharField(max_length=200)
     bio = models.TextField(blank=True)
     linkedin_url = models.URLField(blank=True)
     github_url = models.URLField(blank=True)
