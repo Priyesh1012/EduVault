@@ -1,11 +1,12 @@
 from django.urls import path
 
-from .views import StudentProfileView
+from .views import ProfileView
+
 
 urlpatterns = [
     path(
-        "profile/",
-        StudentProfileView.as_view(),
-        name="student-profile",
+        "",
+        ProfileView.as_view(),
+        name="profile"
     ),
 ]

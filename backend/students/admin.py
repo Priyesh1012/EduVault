@@ -1,9 +1,13 @@
 from django.contrib import admin
+from .models import StudentProfile
 
-from .models import StudentProfile, Skill, Project, Internship
 
-
-admin.site.register(StudentProfile)
-admin.site.register(Skill)
-admin.site.register(Project)
-admin.site.register(Internship)
+@admin.register(StudentProfile)
+class StudentProfileAdmin(admin.ModelAdmin):
+    list_display = (
+        "user",
+        "prn_number",
+        "graduation_year",
+        "cgpa",
+        "visibility",
+    )
