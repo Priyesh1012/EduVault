@@ -90,3 +90,6 @@ class StudentProfileSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+class GraduateStudentSerializer(serializers.Serializer):
+    graduation_date = serializers.DateField()

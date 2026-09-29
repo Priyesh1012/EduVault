@@ -73,5 +73,20 @@ class StudentProfile(models.Model):
         auto_now=True
     )
 
+    class GraduationStatus(models.TextChoices):
+        ONGOING = "ONGOING", "Ongoing"
+        GRADUATED = "GRADUATED", "Graduated"
+
+    graduation_status = models.CharField(
+        max_length=20,
+        choices=GraduationStatus.choices,
+        default=GraduationStatus.ONGOING
+    )
+
+    graduation_date = models.DateField(
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return f"{self.user.email} Profile"
