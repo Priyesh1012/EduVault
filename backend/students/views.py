@@ -81,3 +81,36 @@ class GraduateStudentView(APIView):
             },
             status=status.HTTP_200_OK
         )    
+
+class CommitteeStudentsView(APIView):
+    permission_classes = [IsAuthenticated, IsCommittee]
+
+    def get(self, request):
+        students = User.objects.filter(role="STUDENT")
+
+        data = []
+
+        for student in students:
+            profile = StudentProfile.objects.filter(
+                user=student
+            ).first()
+
+            data.append({
+                "id": student.id,
+                "first_name": student.first_name,
+                "last_name": student.last_name,
+                "email": student.email,
+                "role": student.role,
+                "graduation_status": (
+                    profile.graduation_status
+                    if profile
+                    else "ONGOING"
+                ),
+                "graduation_date": (
+                    profile.graduation_date
+                    if profile
+                    else None
+                ),
+            })
+
+        return Response(data)
