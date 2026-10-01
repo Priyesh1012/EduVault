@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
     # Our apps
     "accounts",
+    "students",
+    "documents",
     "corsheaders",
 ]
 
@@ -138,22 +140,10 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
-INSTALLED_APPS = [
-    # Django default apps
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
 
-    # Third-party apps
-    "rest_framework",
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
-    # Our apps
-    "accounts",
-    "students",
-]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
